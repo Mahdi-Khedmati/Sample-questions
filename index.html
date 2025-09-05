@@ -157,6 +157,13 @@
             <div class="d-flex gap-2 mb-4"><button type="button" id="checkBtn" class="btn btn-primary">بررسی پاسخ‌ها</button><button type="button" id="resetBtn" class="btn btn-secondary">ریست پاسخ‌ها</button></div>
          </form>
          <div id="results" class="hidden"></div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link active" href="./index.html">1</a></li>
+					<li class="page-item"><a class="page-link" href="./Page_2.html">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+				</ul>
+			</nav>
       </div>
       <script>const answers=[2,1,2,2,1,3,0,0,3,1,1,2,0,0,2,1,2,1,0,0];const form=document.getElementById('quizForm');const btn=document.getElementById('checkBtn');const resetBtn=document.getElementById('resetBtn');const resultsDiv=document.getElementById('results');btn.addEventListener('click',()=>{let allAnswered=true;for(let i=1;i<=answers.length;i++){const group=form['q'+i];if(!group||![...group].some(r=>r.checked)){allAnswered=false;break;}}if(!allAnswered){alert('لطفاً ابتدا به تمامی سوالات پاسخ دهید.');return;}let score=0;const feedback=[];for(let i=1;i<=answers.length;i++){const q=form['q'+i];const selected=[...q].findIndex(r=>r.checked);if(selected===answers[i-1]){score++;}else{feedback.push('<div class=\"wrong\">سوال '+i+' غلط است.</div>');}}resultsDiv.innerHTML='<h4>امتیاز: '+score+'/'+answers.length+'</h4>'+feedback.join('');resultsDiv.classList.remove('hidden');window.scrollTo(0,document.body.scrollHeight);});resetBtn.addEventListener('click',()=>{form.reset();resultsDiv.classList.add('hidden');});</script>
    </body>
